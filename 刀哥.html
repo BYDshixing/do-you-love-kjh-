@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Do you love me?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .photo-container {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .photo-container img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #btn-yes {
+            background-color: #ff4757;
+            font-size: 18px;
+        }
+
+        #btn-yes:active {
+            transform: scale(0.95);
+        }
+
+        #btn-no {
+            background-color: #747d8c;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="photo-container" id="photo">
+        <!-- 如果上传到 GitHub，请确保照片文件名和这里一致 -->
+        <img src="c551c206eb9847cdb91515fe98b1a9ce.jpg" alt="Photo">
+    </div>
+
+    <h1 id="question">Do you love me?</h1>
+
+    <div class="btn-group">
+        <button id="btn-yes">Yes</button>
+        <button id="btn-no">No</button>
+    </div>
+
+    <script>
+        const btnYes = document.getElementById('btn-yes');
+        const btnNo = document.getElementById('btn-no');
+        const question = document.getElementById('question');
+        const photo = document.getElementById('photo');
+
+        let noClickCount = 0;
+        let yesFontSize = 18;
+        let yesPadding = 12;
+        let noFontSize = 18;
+
+        btnYes.addEventListener('click', function() {
+            alert('爱你妈错别');
+        });
+
+        btnNo.addEventListener('click', function() {
+            noClickCount++;
+
+            if (noClickCount < 5) {
+                yesFontSize += 20; 
+                yesPadding += 10;
+                noFontSize -= 3;
+
+                btnYes.style.fontSize = yesFontSize + 'px';
+                btnYes.style.padding = yesPadding + 'px ' + (yesPadding * 2) + 'px';
+                btnNo.style.fontSize = noFontSize + 'px';
+                btnNo.style.padding = (noFontSize - 5) + 'px ' + (noFontSize) + 'px';
+                
+            } else {
+                btnNo.style.display = 'none';
+                photo.style.display = 'none';
+                question.style.display = 'none';
+
+                btnYes.style.fontSize = '120px';
+                btnYes.style.padding = '0';
+                btnYes.style.width = '100vw';
+                btnYes.style.height = '100vh';
+                btnYes.style.borderRadius = '0';
+                btnYes.style.display = 'flex';
+                btnYes.style.alignItems = 'center';
+                btnYes.style.justifyContent = 'center';
+                btnYes.innerText = 'Yes ❤️';
+            }
+        });
+    </script>
+
+</body>
+</html>
